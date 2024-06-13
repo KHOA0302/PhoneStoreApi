@@ -1,14 +1,12 @@
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Configuration.AddJsonFile(
-        path: "ocelot.json", 
-        optional: false, 
-        reloadOnChange: true);
+    path: "ocelot.json",
+    optional: false,
+    reloadOnChange: true);
 
     builder.Services.AddCors(options =>
     {

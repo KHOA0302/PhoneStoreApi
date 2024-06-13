@@ -1,5 +1,177 @@
 {
   "Routes": [
+    /***Cart***/
+    //Get user's cart
+    {
+      "DownstreamPathTemplate": "/api/Cart/user/{userId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.ordering",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Cart/user/{userId}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    //Add item to cart
+    {
+      "DownstreamPathTemplate": "/api/Cart/AddItemToCart",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.ordering",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Cart/AddItemToCart",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    //Update user's cart
+    {
+      "DownstreamPathTemplate": "/api/Cart/cartId/{cartId}/phoneOption/{phoneOptionId}/quantity/{quantity}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.ordering",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Cart/cartId/{cartId}/phoneOption/{phoneOptionId}/quantity/{quantity}",
+      "UpstreamHttpMethod": [ "PUT" ]
+    },
+    //Delete and Post item in user's cart
+    {
+      "DownstreamPathTemplate": "/api/Cart/cartId/{cartId}/phoneOption/{phoneOptionId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.ordering",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Cart/cart/{cartId}/phoneOption/{phoneOptionId}",
+      "UpstreamHttpMethod": [ "DELETE", "POST" ]
+    },
+    /***Order***/
+    //Get All order
+    {
+      "DownstreamPathTemplate": "/api/Order/GetAllOrder",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.ordering",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Order/GetAllOrder",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    //Get all user's orders
+    {
+      "DownstreamPathTemplate": "/api/Order/GetAllOrder/user/{userID}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.ordering",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Order/GetAllOrder/user/{userID}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    //Get Order by orderId
+    {
+      "DownstreamPathTemplate": "/api/Order/order/{orerId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.ordering",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Order/order/{orerId}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    //Create new order
+    {
+      "DownstreamPathTemplate": "/api/Order/CreateOrder",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.ordering",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Order/CreateOrder",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    //Add item to order
+    {
+      "DownstreamPathTemplate": "/api/Order/AddOrderItem",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.ordering",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Order/AddOrderItem",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    //Update Order status
+    {
+      "DownstreamPathTemplate": "/api/Order/UpdateOrderStatus/{orderId}/status/{statusCode}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.ordering",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Order/UpdateOrderStatus/{orderId}/status/{statusCode}",
+      "UpstreamHttpMethod": [ "PUT" ]
+    },
+    /***Authentication***/
+    //Register
+    {
+      "DownstreamPathTemplate": "/api/User/Register",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.auth",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/User/Register",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    //Login
+    {
+      "DownstreamPathTemplate": "/api/User/Login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.auth",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/User/Login",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    //Update user Info
+    {
+      "DownstreamPathTemplate": "/api/User/UpdateUserInfo/user/{userId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.auth",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/User/UpdateUserInfo/user/{userId}",
+      "UpstreamHttpMethod": [ "PUT" ]
+    },
     /***Brand***/
     //Get all brand
     {
@@ -80,110 +252,19 @@
       "UpstreamPathTemplate": "/api/BuiltInStorage",
       "UpstreamHttpMethod": [ "POST" ]
     },
-    /***Cart***/
-    //Get user's cart
+    //Phone
+    //Get all phone active
     {
-      "DownstreamPathTemplate": "/api/Cart/user/{userId}",
+      "DownstreamPathTemplate": "/api/Phone/AllPhonesActive",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "phoneshopapi.ordering",
+          "Host": "phoneshopapi.product",
           "Port": 8080
         }
       ],
-      "UpstreamPathTemplate": "/api/Cart/user/{userId}",
+      "UpstreamPathTemplate": "/api/Phone/AllPhonesActive",
       "UpstreamHttpMethod": [ "GET" ]
-    },
-    //Add item to cart
-    {
-      "DownstreamPathTemplate": "/api/Cart/user/{userId}/phoneOption/{phoneOptionId}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "phoneshopapi.ordering",
-          "Port": 8080
-        }
-      ],
-      "UpstreamPathTemplate": "/api/Cart/user/user/{userId}/phoneOption/{phoneOptionId}",
-      "UpstreamHttpMethod": [ "POST" ]
-    },
-    //Update user's cart
-    {
-      "DownstreamPathTemplate": "/api/Cart/cartId/{cartId}/phoneOption/{phoneOptionId}/quantity/{quantity}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "phoneshopapi.ordering",
-          "Port": 8080
-        }
-      ],
-      "UpstreamPathTemplate": "/api/Cart/cartId/{cartId}/phoneOption/{phoneOptionId}/quantity/{quantity}",
-      "UpstreamHttpMethod": [ "PUT" ]
-    },
-    //Delete item in user's cart
-    {
-      "DownstreamPathTemplate": "/api/Cart/cartId/{cartId}/phoneOption/{phoneOptionId}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "phoneshopapi.ordering",
-          "Port": 8080
-        }
-      ],
-      "UpstreamPathTemplate": "/api/Cart/cart/{cartId}/phoneOption/{phoneOptionId}",
-      "UpstreamHttpMethod": [ "DELETE", "POST" ]
-    },
-    /***Order***/
-    //Get all user's orders
-    {
-      "DownstreamPathTemplate": "/api/Order/GetAllOrder/user/{userID}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "phoneshopapi.ordering",
-          "Port": 8080
-        }
-      ],
-      "UpstreamPathTemplate": "/api/Order/GetAllOrder/user/{userID}",
-      "UpstreamHttpMethod": [ "GET" ]
-    },
-    //Create new order
-    {
-      "DownstreamPathTemplate": "/api/Order/CreateOrder",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "phoneshopapi.ordering",
-          "Port": 8080
-        }
-      ],
-      "UpstreamPathTemplate": "/api/Order/CreateOrder",
-      "UpstreamHttpMethod": [ "POST" ]
-    },
-    //Add item to order
-    {
-      "DownstreamPathTemplate": "/api/Order/AddOrderItem",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "phoneshopapi.ordering",
-          "Port": 8080
-        }
-      ],
-      "UpstreamPathTemplate": "/api/Order/AddOrderItem",
-      "UpstreamHttpMethod": [ "POST" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/Order/UpdateOrderStatus/{orderId}/status/{statusCode}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "phoneshopapi.ordering",
-          "Port": 8080
-        }
-      ],
-      "UpstreamPathTemplate": "/api/Order/UpdateOrderStatus/{orderId}/status/{statusCode}",
-      "UpstreamHttpMethod": [ "PUT" ]
     },
     //Get all phone follow brand
     {
@@ -198,6 +279,19 @@
       "UpstreamPathTemplate": "/api/Phone/AllPhonesSellingFollowBrand",
       "UpstreamHttpMethod": [ "GET" ]
     },
+    //Admin Get all phone follow brand
+    {
+      "DownstreamPathTemplate": "/api/Phone/AdminGetAllPhonesSellingFollowBrand",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.product",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Phone/AdminGetAllPhonesSellingFollowBrand",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
     //Get all phones
     {
       "DownstreamPathTemplate": "/api/Phone/AllPhones",
@@ -209,19 +303,6 @@
         }
       ],
       "UpstreamPathTemplate": "/api/Phone/AllPhones",
-      "UpstreamHttpMethod": [ "GET" ]
-    },
-    //Get all phones active
-    {
-      "DownstreamPathTemplate": "/api/Phone/AllPhonesActive",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "phoneshopapi.product",
-          "Port": 8080
-        }
-      ],
-      "UpstreamPathTemplate": "/api/Phone/AllPhonesActive",
       "UpstreamHttpMethod": [ "GET" ]
     },
     //Get phone's buit in storage
@@ -250,6 +331,7 @@
       "UpstreamPathTemplate": "/api/Phone/{phoneId}/{builtInStorageId}",
       "UpstreamHttpMethod": [ "GET" ]
     },
+
     //Create new phone
     {
       "DownstreamPathTemplate": "/api/Phone",
@@ -277,6 +359,32 @@
       "UpstreamHttpMethod": [ "PUT", "DELETE" ]
     },
     /***Phone Color***/
+    //Post phone color
+    {
+      "DownstreamPathTemplate": "/api/Phonecolor",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.product",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Phonecolor",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    //Get, Put, Delete phone color
+    {
+      "DownstreamPathTemplate": "/api/Phonecolor/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.product",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Phonecolor/{id}",
+      "UpstreamHttpMethod": [ "PUT", "GET", "DELETE" ]
+    },
     //Upload image for phone's color
     {
       "DownstreamPathTemplate": "/api/Phonecolor/UpdateImage/{phoneColorId}",
@@ -291,6 +399,19 @@
       "UpstreamHttpMethod": [ "POST" ]
     },
     /***Phone Option***/
+    //Get phone option
+    {
+      "DownstreamPathTemplate": "/api/PhoneOption/phone/{phoneId}/phoneColor/{phoneColorId}/builtInStorageId/{builtInStorageId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "phoneshopapi.product",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/PhoneOption/phone/{phoneId}/phoneColor/{phoneColorId}/builtInStorageId/{builtInStorageId}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
     //Create new phone option
     {
       "DownstreamPathTemplate": "/api/PhoneOption/CreateNewPhoneOption/{phoneId}",
@@ -304,6 +425,7 @@
       "UpstreamPathTemplate": "/api/PhoneOption/CreateNewPhoneOption/{phoneId}",
       "UpstreamHttpMethod": [ "POST" ]
     },
+    //Reset phone option
     {
       "DownstreamPathTemplate": "/api/PhoneOption/ResetPhoneOption/{phoneId}",
       "DownstreamScheme": "http",
@@ -341,33 +463,6 @@
       ],
       "UpstreamPathTemplate": "/api/PhoneOption/phone/{phoneId}/phoneColor/{phoneColorId}/builtInStorage/{builtInStorageId}",
       "UpstreamHttpMethod": [ "PUT" ]
-    },
-    /***Authentication***/
-    //Register
-    {
-      "DownstreamPathTemplate": "/api/User/Register",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "phoneshopapi.auth",
-          "Port": 8080
-        }
-      ],
-      "UpstreamPathTemplate": "/api/User/Register",
-      "UpstreamHttpMethod": [ "POST" ]
-    },
-    //Login
-    {
-      "DownstreamPathTemplate": "/api/User/Login",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "phoneshopapi.auth",
-          "Port": 8080
-        }
-      ],
-      "UpstreamPathTemplate": "/api/User/Login",
-      "UpstreamHttpMethod": [ "POST" ]
     }
   ],
   "GlobalConfiguration": {
