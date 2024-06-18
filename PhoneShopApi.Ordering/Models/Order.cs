@@ -12,7 +12,7 @@ namespace PhoneShopApi.Ordering.Models
         public string ShippingAddress { get; set; } = string.Empty;
         public DateTime CreateAt { get; set; }
         public bool IsUserDeleted { get; set; } = false;
-        public string OrderStatus { get; set; } = "Đang chuẩn bị hàng";
+        public string OrderStatus { get; set; } = "0";
 
         public Payment Payment { get; set; } = null!;
         public User User { get; set; } = null!;

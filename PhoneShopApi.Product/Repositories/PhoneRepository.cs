@@ -123,43 +123,23 @@ namespace PhoneShopApi.Product.Repositories
 
                 foreach (var phone in phones)
                 {
-                    if (phone.PhoneOptions.Count <= 0)
+                    var phoneOption = phone.PhoneOptions.FirstOrDefault(po => po.Price > 0 && po.Quantity > 0);
+                    if (phoneOption == null || phoneOption.Price <= 0 || phoneOption.Quantity <= 0) continue;
+
+                    var item = new Item
                     {
-                        var item = new Item
-                        {
-                            IsSelling = phone.IsSelling,
-                            PhoneId = phone.Id,
-                            PhoneName = phone.Name,
-                            BuiltInStorageCapacity = -1,
-                            BuiltInStorageUnit = "N/A",
-                            PhoneColorName = "N/A",
-                            PhoneColorUrl = "N/A",
-                            Price = -1,
-                            Quantity = -1,
-                        };
+                        IsSelling = phone.IsSelling,
+                        PhoneId = phone.Id,
+                        PhoneName = phone.Name,
+                        BuiltInStorageCapacity = phoneOption.BuiltInStorage.Capacity,
+                        BuiltInStorageUnit = phoneOption.BuiltInStorage.Unit,
+                        PhoneColorName = phoneOption.PhoneColor.Name,
+                        PhoneColorUrl = phoneOption.PhoneColor.ImageUrl,
+                        Price = phoneOption.Price,
+                        Quantity = phoneOption.Quantity
+                    };
 
-                        newPhoneItem.Phones.Add(item);
-                    }
-                    else
-                    {
-                        var phoneOption = phone.PhoneOptions.FirstOrDefault(po => po.Price > 0 && po.Quantity > 0);
-                        if (phoneOption == null) continue;
-
-                        var item = new Item
-                        {
-                            IsSelling = phone.IsSelling,
-                            PhoneId = phone.Id,
-                            PhoneName = phone.Name,
-                            BuiltInStorageCapacity = phoneOption.BuiltInStorage.Capacity,
-                            BuiltInStorageUnit = phoneOption.BuiltInStorage.Unit,
-                            PhoneColorName = phoneOption.PhoneColor.Name,
-                            PhoneColorUrl = phoneOption.PhoneColor.ImageUrl,
-                            Price = phoneOption.Price,
-                            Quantity = phoneOption.Quantity
-                        };
-
-                        newPhoneItem.Phones.Add(item);
-                    }
+                    newPhoneItem.Phones.Add(item);
 
                 }
 
