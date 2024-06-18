@@ -375,25 +375,25 @@ namespace PhoneShopApi.Product.Data
                 {
                     Id = 5,
                     Name = "Đen",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_den.webp",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pro_den.webp",
                 },
                 new()
                 {
                     Id = 6,
                     Name = "Trắng",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_trang.webp",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pro_trang.webp",
                 },
                 new()
                 {
                     Id = 7,
                     Name = "Xanh",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_xanh.webp",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pro_xanh.webp",
                 },
                 new()
                 {
                     Id = 8,
                     Name = "Titan",
-                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pr_titan.webp",
+                    ImageUrl = $"{hostUrl}/Uploads/PhoneImages/ip15_pro_titan.webp",
                 },
                 //iphone 15 plus
                 new()
